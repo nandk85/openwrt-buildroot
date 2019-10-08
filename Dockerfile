@@ -12,8 +12,8 @@ RUN curl http://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash &&\
     apt-get install -y nodejs
 
-RUN npm install --global gulp preact@8.2.7 preact-compat preact-cli preact-material-components webpack react
-RUN npm install gulp preact@8.2.7 preact-compat preact-cli preact-material-components webpack react
+RUN npm install --global gulp preact@8.2.7 preact-compat preact-cli preact-material-components webpack react gulp-cli
+RUN npm install gulp preact@8.2.7 preact-compat preact-cli preact-material-components webpack react gulp-cli
 
 # Default sh to bash
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
