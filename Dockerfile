@@ -12,8 +12,8 @@ RUN curl http://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash &&\
     apt-get install -y nodejs
 
-RUN npm install --global gulp
-RUN npm install gulp
+RUN npm install --global gulp preact preact-compat
+RUN npm install gulp preact preact-compat
 
 # Default sh to bash
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
