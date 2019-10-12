@@ -3,7 +3,8 @@ FROM ubuntu:16.04
 RUN apt-get update &&\
     apt-get install -y sudo time git-core subversion build-essential gcc-multilib \
                        libncurses5-dev python3 curl vim libreadline-dev libssl-dev \
-                       zlib1g-dev gawk flex gettext wget xzutils unzip python autotools-dev perl &&\
+                       zlib1g-dev gawk flex gettext wget xzutils unzip python autotools-dev \
+                       perl libxml-parser-perl &&\
     apt-get clean
 
 # Add "repo" tool (used by many Yocto-based projects)
