@@ -4,7 +4,7 @@ RUN apt-get update &&\
     apt-get install -y sudo time git-core subversion build-essential gcc-multilib \
                        libncurses5-dev python3 curl vim libreadline-dev libssl-dev \
                        zlib1g-dev gawk flex gettext wget xz-utils unzip python autotools-dev \
-                       perl libxml-parser-perl rpcbind nfs-common &&\
+                       perl libxml-parser-perl rpcbind nfs-common openssh-client &&\
     apt-get clean
 
 # Add "repo" tool (used by many Yocto-based projects)
@@ -23,6 +23,11 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
 RUN useradd -m openwrt &&\
     echo 'openwrt ALL=NOPASSWD: ALL' > /etc/sudoers.d/openwrt
+
+# Disable Host Key verification.
+RUN mkdir -p /home/openwrt/.ssh
+RUN echo -e "Host *\n\tStrictHostKeyChecking no\n" > /home/openwrt/.ssh/config
+RUN chown -R openwrt:openwrt /home/openwrt/.ssh
 
 USER openwrt
 WORKDIR /home/openwrt
