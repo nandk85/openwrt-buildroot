@@ -24,6 +24,12 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 RUN useradd -m openwrt &&\
     echo 'openwrt ALL=NOPASSWD: ALL' > /etc/sudoers.d/openwrt
 
+RUN export LANGUAGE=en_US.UTF-8 &&\
+    export LANG=en_US.UTF-8 &&\
+    export LC_ALL=en_US.UTF-8 &&\
+    locale-gen en_US.UTF-8 &&\
+    DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
+
 # Disable Host Key verification.
 RUN mkdir -p /home/openwrt/.ssh
 RUN echo -e "Host *\n\tStrictHostKeyChecking no\n" > /home/openwrt/.ssh/config
