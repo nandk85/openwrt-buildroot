@@ -4,7 +4,7 @@ RUN apt-get update &&\
     apt-get install -y sudo time git-core subversion build-essential gcc-multilib \
                        libncurses5-dev python3 curl vim libreadline-dev libssl-dev \
                        zlib1g-dev gawk flex gettext wget xz-utils unzip python autotools-dev \
-                       perl libxml-parser-perl rpcbind nfs-common openssh-client &&\
+                       perl libxml-parser-perl rpcbind nfs-common openssh-client locales &&\
     apt-get clean
 
 # Add "repo" tool (used by many Yocto-based projects)
