@@ -47,7 +47,6 @@ RUN echo 'openwrt:openwrt' |chpasswd
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 RUN echo "export VISIBLE=now" >> /etc/profile
-RUN mkdir /home/openwrt/.ssh
 
 # clean up apt cache
 RUN apt-get clean && \
