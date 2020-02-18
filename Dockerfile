@@ -17,6 +17,12 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash &&\
 RUN npm install --global gulp preact@8.2.7 preact-compat preact-cli preact-material-components@1.5.2 webpack react gulp-cli
 RUN npm install gulp preact@8.2.7 preact-compat preact-cli preact-material-components@1.5.2 webpack react gulp-cli
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jdk
+
+# do some fancy footwork to create a JAVA_HOME that's cross-architecture-safe
+RUN ln -svT "/usr/lib/jvm/java-8-openjdk-$(dpkg --print-architecture)" /docker-java-home
+ENV JAVA_HOME /docker-java-home
+
 # Default sh to bash
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
 RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
